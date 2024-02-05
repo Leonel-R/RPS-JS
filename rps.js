@@ -33,7 +33,18 @@ function playRound(playerSelection,computerSelection) {
     }
 }
 
-let playerSelection = "PaPeR"
-let computerSelection = getComputerChoice()
-
-// console.log(playRound(playerSelection,computerSelection))
+function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt('Rock, Paper, or Scissors?')
+        let matchResult = playRound(playerSelection,getComputerChoice())
+        if (matchResult.search("You Win!") != -1) {
+            playerScore ++;
+        } else if (matchResult.search("You Win!") == -1 && matchResult != 'Draw!') {
+            computerScore ++;
+        }
+        console.log(`${matchResult}...Player Score: ${playerScore}...Computer Score: ${computerScore}`)
+    }
+}
